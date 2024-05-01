@@ -10,7 +10,7 @@ LUCI_TITLE:=LuCI for Zerotier
 LUCI_DEPENDS:=+zerotier
 LUCI_PKGARCH:=all
 
-PKG_NAME:=luci-app-zerotier
+PKG_NAME:=luci-app-zerotier-plus
 PKG_VERSION:=2.2
 PKG_RELEASE:=20
 
