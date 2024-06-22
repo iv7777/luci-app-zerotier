@@ -20,9 +20,12 @@ start() {
 
 	[ $enabled -eq 0 ] && log "Service disabled in config." && return 0
 
-	# Ensure that the service is running
-	if ! $PROG running; then
-		log "Service status isn't running!"
+	# Start zerotier service
+	$PROG start
+
+	# Ensure that zerotier-one is running
+	if ! pgrep "zerotier-one" > /dev/null; then
+		log "zerotier-one is not running!"
 		return 1
 	fi
 
@@ -66,6 +69,9 @@ start() {
 }
 
 stop() {
+	# Stop zerotier service
+	$PROG stop
+
 	local zt_devs FW ip_segment rule
 
 	zt_devs="$(ifconfig | grep 'zt' | awk '{print $1}')"
